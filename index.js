@@ -5,7 +5,7 @@ const argv = require('minimist')(process.argv.slice(2));
 const app = new Clarifai.App({apiKey: 'YOUR_API_KEY'});
 
 // Predict the contents of an image by passing in a URL:
-app.models.predict(Clarifai.FOOD_MODEL, argv['k'])
+app.models.predict(Clarifai.FOOD_MODEL, argv['src'])
   .then(response => {
     var result = false;
     var responses = response['outputs'][0]['data']['concepts'];
