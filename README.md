@@ -1,2 +1,2 @@
 # nothotdog
-A simple machine learning demo inspired by 'Silicon Valley'
+A simple machine learning demo inspired by <i>Silicon Valley</i>
