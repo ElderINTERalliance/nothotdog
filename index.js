@@ -9,7 +9,7 @@ if (!apiKey) {
 }
 
 // Instantiate a new Clarifai app by passing in your API key:
-const app = new Clarifai.App({ apiKey: "apiKey" });
+const app = new Clarifai.App({ apiKey: apiKey });
 
 // Stop if there is no image.
 if (!argv["src"]) {
