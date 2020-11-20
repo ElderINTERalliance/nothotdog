@@ -2,25 +2,29 @@ const Clarifai = require("clarifai");
 const argv = require("minimist")(process.argv.slice(2));
 const apiKey = "";
 
+const imageURL =
+	"https://thekindlife.com/wp-content/uploads/2020/08/bill-stephan-og0C_9Mz6RA-unsplash.jpg";
+
 // Stop if there is no api key.
 if (!apiKey) {
 	const noKeyProvided = "Error! Please add your api key.";
-	throw noKeyProvided;
+	console.log(noKeyProvided);
+	process.exit(0);
+}
+
+// Stop if there is no image.
+if (!imageURL) {
+	const noImageProvided = "Error! This needs to be called with an image.";
+	console.log(noImageProvided);
+	process.exit(0);
 }
 
 // Instantiate a new Clarifai app by passing in your API key:
 const app = new Clarifai.App({ apiKey: apiKey });
 
-// Stop if there is no image.
-if (!argv["src"]) {
-	const noImageProvided =
-		"Error! This needs to be called with a src argument. See README.md for more details.";
-	throw noImageProvided;
-}
-
 // Predict the contents of an image by passing in a URL:
 app.models
-	.predict(Clarifai.FOOD_MODEL, argv["src"])
+	.predict(Clarifai.FOOD_MODEL, imageURL)
 	.then((response) => {
 		var result = false;
 		var responses = response["outputs"][0]["data"]["concepts"];
